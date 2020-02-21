@@ -2737,7 +2737,6 @@ var LessonsComponent = /** @class */ (function () {
                 this.Errormessage = 'Please fill the form';
             }
             else {
-                alert(CreateLesson.value.Lesson);
                 var CreateCourse = { Lesson: CreateLesson.value.Lesson, language: CreateLesson.value.language, coursename: CreateLesson.value.coursename, Lessonname: CreateLesson.value.Lessonname, Lessondescription: CreateLesson.value.Lessondescription, imgURL: this.imgURL, imgURLIcon: this.imgURLIcon };
                 this.http.post('http://167.71.93.67:8080/api/lasson', JSON.stringify(CreateCourse)).subscribe(function (response) {
                     var message = JSON.parse(JSON.stringify(response));
