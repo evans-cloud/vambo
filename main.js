@@ -2737,6 +2737,7 @@ var LessonsComponent = /** @class */ (function () {
                 this.Errormessage = 'Please fill the form';
             }
             else {
+                alert(CreateLesson.value.Lesson);
                 var CreateCourse = { Lesson: CreateLesson.value.Lesson, language: CreateLesson.value.language, coursename: CreateLesson.value.coursename, Lessonname: CreateLesson.value.Lessonname, Lessondescription: CreateLesson.value.Lessondescription, imgURL: this.imgURL, imgURLIcon: this.imgURLIcon };
                 this.http.post('http://167.71.93.67:8080/api/lasson', JSON.stringify(CreateCourse)).subscribe(function (response) {
                     var message = JSON.parse(JSON.stringify(response));
@@ -2762,7 +2763,7 @@ var LessonsComponent = /** @class */ (function () {
                     } */
                     _this.class = 'alert alert-danger';
                     _this.role = 'alert';
-                    _this.Errormessage = 'Lesson is created';
+                    _this.Errormessage = message.message;
                     CreateLesson.resetForm();
                     _this.imgURL = [];
                     _this.imgURLIcon = [];
@@ -2955,6 +2956,7 @@ var LessonsComponent = /** @class */ (function () {
         var _this = this;
         this.http.get('http://167.71.93.67:8080/api/Lessons').subscribe(function (data) {
             var message = JSON.parse(JSON.stringify(data));
+            console.log(data);
             _this.Lessons = [];
             // tslint:disable-next-line: forin
             for (var i in message) {
