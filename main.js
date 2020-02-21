@@ -2630,7 +2630,6 @@ var LessonsComponent = /** @class */ (function () {
     };
     LessonsComponent.prototype.ChangeLanguage = function (change) {
         var _this = this;
-        alert(change);
         var Language = { Language: change };
         this.FilterLesson(Language);
         this.http.post('http://167.71.93.67:8080/api/filterbyLanguage', JSON.stringify(Language)).subscribe(function (response) {
