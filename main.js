@@ -3867,7 +3867,7 @@ var SentenceconstractionComponent = /** @class */ (function () {
             this.Errormessage = 'Make sure all fields are filled';
         }
         else {
-            var final = { sentance: SentenceContruction.value.sentance, sentanceContruction: SentenceContruction.value.sentanceContruction, lessonname: this.lessonname, Lessonid: localStorage.getItem('CourseName') };
+            var final = { sentance: SentenceContruction.value.sentance, sentanceContruction: SentenceContruction.value.sentanceContruction, lessonname: localStorage.getItem('LessonName'), Lessonid: localStorage.getItem('LessonID') };
             this.http.post('http://167.71.93.67:8080/api/sentancecontruction', JSON.stringify(SentenceContruction.value)).subscribe(function (response) {
                 var message = JSON.parse(JSON.stringify(response));
                 SentenceContruction.resetForm();
