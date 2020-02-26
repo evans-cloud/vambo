@@ -3868,7 +3868,7 @@ var SentenceconstractionComponent = /** @class */ (function () {
         }
         else {
             var final = { sentance: SentenceContruction.value.sentance, sentanceContruction: SentenceContruction.value.sentanceContruction, lessonname: localStorage.getItem('LessonName'), Lessonid: localStorage.getItem('LessonID') };
-            this.http.post('http://167.71.93.67:8080/api/sentancecontruction', JSON.stringify(SentenceContruction.value)).subscribe(function (response) {
+            this.http.post('http://167.71.93.67:8080/api/sentancecontruction', JSON.stringify(final)).subscribe(function (response) {
                 var message = JSON.parse(JSON.stringify(response));
                 SentenceContruction.resetForm();
                 _this.display = 'block';
@@ -3892,10 +3892,14 @@ var SentenceconstractionComponent = /** @class */ (function () {
             // tslint:disable-next-line: forin
             for (var i in message) {
                 // tslint:disable-next-line: prefer-const
-                var getId = message[i].Id;
-                var getallfirstsentance = message[i].Firstsentance;
-                var getallsecondsentance = message[i].Secondsentance;
-                _this.SentenceConstruction.push({ Id: getId, Firstsentance: getallfirstsentance, Secondsentance: getallsecondsentance });
+                if (message[i].Lessonid == localStorage.getItem('LessonID')) {
+                    var getId = message[i].Id;
+                    var getallfirstsentance = message[i].Firstsentance;
+                    var getallsecondsentance = message[i].Secondsentance;
+                    var getallLessonID = message[i].Lessonid;
+                    var getallLessonName = message[i].lessonname;
+                    _this.SentenceConstruction.push({ Id: getId, Lessonid: getallLessonID, lessonname: getallLessonName, Firstsentance: getallfirstsentance, Secondsentance: getallsecondsentance });
+                }
             }
         });
     };
